@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "¡Escapaste!";
+}
+
+<div class="text-center home-hero">
+
+    <span class="container-emoji">🏆</span>
+
+    <h1 class="display-4">¡Escapaste del Chacho!</h1>
+    <p class="lead">Bien jugado, @ViewBag.NombreParticipante.</p>
+    <p>
+        Lograste salir del container antes de que te subieran al vuelo a Arabia Saudita.
+        River te espera de vuelta en el Monumental.
+    </p>
+
+    <a class="btn btn-comenzar mt-3" asp-controller="Home" asp-action="Reiniciar">Jugar de nuevo</a>
+
+</div>

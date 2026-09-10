@@ -1,0 +1,43 @@
+@{
+    ViewData["Title"] = "Tutorial / Historia";
+}
+
+<h1>Tutorial / Historia</h1>
+
+<h3>Ambientación</h3>
+<p>
+    Sos una joven promesa de las inferiores de River Plate. Después de un partido en el Monumental,
+    un representante trucho te encerró en un container en el puerto: te va a vender a un club de
+    Arabia Saudita sin que vos lo sepas ni lo quieras. El barco zarpa pronto, así que tenés que
+    escapar del container antes de que sea tarde.
+</p>
+
+<h3>Objetivo</h3>
+<p>
+    Recorrer las cuatro habitaciones del container, resolver el desafío de cada una y llegar a la
+    puerta de salida antes de que te suban al vuelo a Arabia Saudita.
+</p>
+
+<h3>Cómo funciona el juego</h3>
+<p>
+    Primero tenés que ingresar tu nombre para identificarte. A partir de ahí entrás a la primera
+    habitación. Cada habitación tiene una narrativa propia y un desafío para resolver. No podés
+    saltear una habitación sin resolver la anterior: el servidor controla eso contra la base de
+    datos, no importa lo que hagas desde el navegador.
+</p>
+
+<h3>Cómo se resuelven los desafíos</h3>
+<p>
+    Cada habitación tiene un campo de texto y un botón "Enviar". Ingresá la clave que resolviste y
+    enviala. Si es correcta, avanzás automáticamente a la siguiente habitación. Si es incorrecta,
+    te va a aparecer un mensaje de error y vas a poder reintentar sin perder el progreso, siempre
+    que no hayas alcanzado el límite de intentos de esa sala.
+</p>
+
+<h3>Cómo se usan las pistas</h3>
+<p>
+    Si te quedás trabado, cada habitación tiene un botón "Pista" que abre una ventana con una
+    ayuda. Podés cerrarla y seguir intentando sin perder lo que ya escribiste.
+</p>
+
+<a asp-controller="Home" asp-action="Identificacion" class="btn-comenzar">Empezar a jugar</a>

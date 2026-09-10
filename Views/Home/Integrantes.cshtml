@@ -1,0 +1,18 @@
+@model List<Integrante>
+@{
+    ViewData["Title"] = "Integrantes";
+}
+
+<h1>Integrantes</h1>
+<p>El equipo que armó "Escapar del Chacho":</p>
+
+<div class="d-flex flex-wrap gap-4 mt-4">
+    @foreach (var integrante in Model)
+    {
+        <div class="tarjeta-integrante text-center">
+            <!-- Placeholder de foto: reemplazar por la foto real de cada integrante -->
+            <div class="avatar-integrante">@integrante.iniciales</div>
+            <p class="mt-2 mb-0">@integrante.nombre</p>
+        </div>
+    }
+</div>

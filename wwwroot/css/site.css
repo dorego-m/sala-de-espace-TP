@@ -1,0 +1,91 @@
+body {
+    background-color: #16181d;
+    color: #eaeaea;
+}
+
+.bg-container {
+    background-color: #a3121c; /* rojo River */
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.home-hero {
+    padding: 40px 0;
+}
+
+.container-emoji {
+    font-size: 5rem;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.container-imagen {
+    margin-bottom: 10px;
+}
+
+.btn-comenzar {
+    background-color: #a3121c;
+    color: #fff;
+    border: none;
+    padding: 10px 30px;
+}
+
+.btn-comenzar:hover {
+    background-color: #640b0b;
+    color: #fff;
+}
+
+.link-secundario {
+    color: #eaeaea;
+    text-decoration: underline;
+}
+
+.narrativa-sala {
+    background-color: #23262e;
+    border-left: 4px solid #a3121c;
+    padding: 15px 20px;
+    border-radius: 4px;
+}
+
+.desafio-sala {
+    background-color: #23262e;
+    padding: 15px 20px;
+    border-radius: 4px;
+}
+
+.tarjeta-integrante {
+    width: 140px;
+}
+
+.avatar-integrante {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #a3121c;
+    color: #fff;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.form-control {
+    background-color: #23262e;
+    color: #eaeaea;
+    border: 1px solid #444;
+}
+
+.form-control:focus {
+    background-color: #23262e;
+    color: #eaeaea;
+    border-color: #a3121c;
+    box-shadow: none;
+}
+
+.modal-content {
+    background-color: #23262e;
+    color: #eaeaea;
+}

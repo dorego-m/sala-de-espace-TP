@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Identificación";
+}
+
+<div class="text-center">
+
+    <h1>¿Cómo te llamás?</h1>
+    <p>Ingresá tu nombre. Si ya tenías una partida en curso, la vamos a retomar donde la dejaste.</p>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+
+    <form id="formIdentificacion" asp-controller="Home" asp-action="Identificacion" method="post" class="mt-3">
+        <div class="mb-3 col-md-4 mx-auto">
+            <input type="text" name="nombreParticipante" id="nombreParticipante" class="form-control" placeholder="Tu nombre" />
+        </div>
+        <button type="submit" class="btn btn-comenzar">Entrar al container</button>
+    </form>
+
+</div>
+
+@section Scripts {
+    <script>
+        // Validación simple del lado del cliente: no dejar enviar el nombre vacío.
+        // La validación importante (crear/retomar partida) siempre se hace en el servidor.
+        document.getElementById("formIdentificacion").addEventListener("submit", function (e) {
+            var nombre = document.getElementById("nombreParticipante").value.trim();
+            if (nombre.length === 0) {
+                e.preventDefault();
+                alert("Tenés que ingresar tu nombre para poder entrar.");
+            }
+        });
+    </script>
+}
