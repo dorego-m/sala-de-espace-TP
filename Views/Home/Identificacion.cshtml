@@ -21,16 +21,3 @@
 
 </div>
 
-@section Scripts {
-    <script>
-        // Validación simple del lado del cliente: no dejar enviar el nombre vacío.
-        // La validación importante (crear/retomar partida) siempre se hace en el servidor.
-        document.getElementById("formIdentificacion").addEventListener("submit", function (e) {
-            var nombre = document.getElementById("nombreParticipante").value.trim();
-            if (nombre.length === 0) {
-                e.preventDefault();
-                alert("Tenés que ingresar tu nombre para poder entrar.");
-            }
-        });
-    </script>
-}

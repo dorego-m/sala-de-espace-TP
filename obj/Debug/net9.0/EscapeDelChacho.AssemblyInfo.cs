@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EscapeDelChacho")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08286abe14db8e2b439be4ed78faa9f17f12d5b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("EscapeDelChacho")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EscapeDelChacho")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

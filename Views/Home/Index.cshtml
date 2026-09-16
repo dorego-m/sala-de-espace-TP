@@ -2,23 +2,15 @@
     ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center home-hero">
+<div class="text-center">
+    <h1 class="display-4">¡Bienvenido a Escape del Chacho!</h1>
+    <p>Ingresa tu nombre para comenzar a jugar.</p>
 
-    <div class="container-imagen">
-        <!-- Placeholder de la imagen representativa del juego: reemplazar por una foto/ilustración real del container -->
-        <span class="container-emoji">🚢🔒</span>
-    </div>
-
-    <h1 class="display-4">Escapar del Chacho</h1>
-    <p class="lead">Container de River Plate</p>
-    <p>Te encerraron en un container del puerto. Tenés que escapar antes de que te vendan a Arabia Saudita.</p>
-
-    <a class="btn-comenzar" asp-controller="Home" asp-action="Identificacion">Comenzar</a>
-
-    <div class="mt-4">
-        <a asp-controller="Home" asp-action="Tutorial" class="link-secundario">Tutorial / Historia</a>
-        &nbsp;·&nbsp;
-        <a asp-controller="Home" asp-action="Integrantes" class="link-secundario">Integrantes</a>
-    </div>
-
+    <form action='@Url.Action("Iniciar", "Home")' method="POST">
+        <label>Nombre del Participante:</label>
+        <br />
+        <input type="text" name="nombreParticipante" placeholder="Ej: Juan Perez" required />
+        <br /><br />
+        <input type="submit" value="Entrar" class="btn btn-primary" />
+    </form>
 </div>
