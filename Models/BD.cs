@@ -1,8 +1,8 @@
 using System.Data;
-using Microsoft.Data.SqlClient; 
+using Microsoft.Data.SqlClient;
 using Dapper;
 
-namespace EscapeDelChacho.Models 
+namespace EscapeDelChacho.Models
 {
     public class BD
     {
@@ -16,7 +16,7 @@ namespace EscapeDelChacho.Models
                 db.Execute(storedProcedure, new { Nombre = nombre }, commandType: CommandType.StoredProcedure);
             }
         }
-        
+
         public static void ActualizarSala(int partidaId, int nuevaSala)
         {
             using (SqlConnection db = new SqlConnection(_connectionString))
@@ -32,6 +32,19 @@ namespace EscapeDelChacho.Models
             {
                 string storedProcedure = "sp_ObtenerPartida";
                 return db.QueryFirstOrDefault<Partida>(storedProcedure, new { Id = partidaId }, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public static Habitacion? ObtenerHabitacion(int orden)
+        {
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                const string query = @"
+                    SELECT Id, Orden, Nombre, Narrativa, Desafio, RespuestaCorrecta, ContenidoPista
+                    FROM Habitaciones
+                    WHERE Orden = @orden";
+
+                return db.QueryFirstOrDefault<Habitacion>(query, new { orden });
             }
         }
     }

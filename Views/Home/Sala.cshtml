@@ -1,73 +1,77 @@
 @model Habitacion
 @{
-    ViewData["Title"] = Model.nombre;
+    ViewData["Title"] = Model is null ? "Sala" : Model.nombre;
 }
 
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <span class="badge bg-secondary">@ViewBag.Progreso</span>
-    <span class="text-muted">Jugador: @ViewBag.NombreParticipante</span>
-</div>
-
-<h1>@Model.nombre</h1>
-
-<div class="narrativa-sala">
-    <p style="white-space: pre-line;">@Model.narrativa</p>
-</div>
-
-<div class="desafio-sala mt-3">
-    <h4>Desafío</h4>
-    <p style="white-space: pre-line;">@Model.desafio</p>
-</div>
-
-@if (ViewBag.Error != null)
+@if (Model is null)
 {
-    <div class="alert alert-danger">@ViewBag.Error</div>
+    <div class="alert alert-warning">No se encontró la habitación solicitada.</div>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-comenzar">Volver al inicio</a>
 }
-
-<form id="formRespuesta" asp-controller="Home" asp-action="Resolver" method="post" class="mt-4">
-    <input type="hidden" name="habitacionId" value="@Model.id" />
-    <input type="hidden" name="orden" value="@Model.orden" />
-
-    <div class="mb-3 col-md-4">
-        <label for="respuesta" class="form-label">Tu respuesta:</label>
-        <input type="text" name="respuesta" id="respuesta" class="form-control" autocomplete="off" />
+else
+{
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <span class="badge bg-secondary">@ViewBag.Progreso</span>
+        <span class="text-muted">Jugador: @ViewBag.NombreParticipante</span>
     </div>
 
-    <button type="submit" class="btn btn-comenzar">Enviar</button>
-    <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalPista">Pista</button>
+    <h1>@Model.nombre</h1>
 
-    <p class="text-muted mt-2">Intentos restantes: @ViewBag.IntentosRestantes</p>
-</form>
+    <div class="narrativa-sala">
+        <p style="white-space: pre-line;">@Model.narrativa</p>
+    </div>
 
-<!-- Modal de pista: se abre sin perder lo que el jugador ya escribió en el formulario -->
-<div class="modal fade" id="modalPista" tabindex="-1" aria-labelledby="modalPistaLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalPistaLabel">Pista</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <p>@Model.contenidoPista</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-comenzar" data-bs-dismiss="modal">Cerrar</button>
+    <div class="desafio-sala mt-3">
+        <h4>Desafío</h4>
+        <p style="white-space: pre-line;">@Model.desafio</p>
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+
+    <form id="formRespuesta" asp-controller="Home" asp-action="Resolver" method="post" class="mt-4">
+        <input type="hidden" name="habitacionId" value="@Model.id" />
+        <input type="hidden" name="orden" value="@Model.orden" />
+
+        <div class="mb-3 col-md-4">
+            <label for="respuesta" class="form-label">Tu respuesta:</label>
+            <input type="text" name="respuesta" id="respuesta" class="form-control" autocomplete="off" />
+        </div>
+
+        <button type="submit" class="btn btn-comenzar">Enviar</button>
+        <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#modalPista">Pista</button>
+
+        <p class="text-muted mt-2">Intentos restantes: @ViewBag.IntentosRestantes</p>
+    </form>
+
+    <div class="modal fade" id="modalPista" tabindex="-1" aria-labelledby="modalPistaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalPistaLabel">Pista</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <p>@Model.contenidoPista</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-comenzar" data-bs-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-@section Scripts {
-    <script>
-        // Validación del lado del cliente: no dejar enviar el formulario sin
-        // respuesta. La validación real de si la clave es correcta se hace
-        // siempre en el servidor, contra la base de datos.
-        document.getElementById("formRespuesta").addEventListener("submit", function (e) {
-            var respuesta = document.getElementById("respuesta").value.trim();
-            if (respuesta.length === 0) {
-                e.preventDefault();
-                alert("Ingresá una respuesta antes de enviar.");
-            }
-        });
-    </script>
+    @section Scripts {
+        <script>
+            document.getElementById("formRespuesta").addEventListener("submit", function (e) {
+                var respuesta = document.getElementById("respuesta").value.trim();
+                if (respuesta.length === 0) {
+                    e.preventDefault();
+                    alert("Ingresá una respuesta antes de enviar.");
+                }
+            });
+        </script>
+    }
 }
